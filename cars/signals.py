@@ -9,7 +9,7 @@ def car_inventory_update():
   cars_count = Car.objects.all().count()
   cars_value = Car.objects.aggregate(
     total_value = Sum('value')
-  )['total_value']
+  )['total_value'] or 0
 
   CarInventory.objects.create(
     cars_count = cars_count,
